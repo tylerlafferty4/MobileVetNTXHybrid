@@ -5,7 +5,9 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { AppointmentPage } from '../pages/appointments/appointments';
+import { ServicesPage } from '../pages/services/services';
+import { OnlineStorePage } from '../pages/online-store/online-store';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,7 +18,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
+    AppointmentPage,
+    ServicesPage,
+    OnlineStorePage,
     TabsPage
   ],
   imports: [
@@ -28,7 +32,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
+    AppointmentPage,
+    ServicesPage,
+    OnlineStorePage,
     TabsPage
   ],
   providers: [
