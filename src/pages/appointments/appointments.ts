@@ -16,7 +16,7 @@ export class AppointmentPage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public toastCtrl: ToastController) {
     this.appointment = this.formBuilder.group({
       name: [''],
-      phone: ['', Validators.required, this.phoneValidator.bind(this)],
+      phone: ['', Validators.required],
       address: ['', Validators.required],
       address2: [''],
       city: ['', Validators.required],
@@ -26,14 +26,6 @@ export class AppointmentPage {
       petName: [''],
       nature: ['']
     });
-  }
-
-  phoneValidator(control: FormControl): {[s: string]: boolean} {
-    if (control.value !== '') {
-      if (!control.value.match('\\(?\\d{3}\\)?-? *\\d{3}-? *-?\\d{4}')) {
-        return {invalidPhone: true};
-      }
-    }
   }
 
   logForm() {
