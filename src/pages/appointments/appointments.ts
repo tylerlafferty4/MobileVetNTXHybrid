@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Http, Request, Headers, RequestMethod} from "@angular/http";
 
 @Component({
   selector: 'page-appointments',
@@ -13,11 +12,8 @@ export class AppointmentPage {
   userInfo: {name: string, phone: string, address: string, address2: string, city: string, zip: string, email: string, date: string, petName: string, nature: string} =
             {name: '', phone: '', address: '', address2: '', city: '', zip: '', email: '', date: '', petName: '', nature: ''};
   background = '#50095f';
-  http: Http;
-  mailgunUrl: string;
-  mailgunApiKey: string;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public toastCtrl: ToastController, http: Http) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public toastCtrl: ToastController) {
     this.appointment = this.formBuilder.group({
       name: [''],
       phone: ['', Validators.required],

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Tabs, Platform } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-online-store',
@@ -7,13 +8,22 @@ import { NavController } from 'ionic-angular';
 })
 export class OnlineStorePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public platform: Platform, private iab: InAppBrowser) {
 
   }
 
-  ngOnInit() {
-
-    // window.open('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'location=no,toolbar=yes');
+  ionViewDidEnter() {
+    const browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no');
+    browser.show();
+    browser.on('exit').subscribe(event => {
+      console.log("loadstart -->",event);
+        this.platform.ready().then(() => {
+          var t: Tabs = this.navCtrl.parent;
+          t.select(t.previousTab());
+        });
+    }, err => {
+      console.log("InAppBrowser loadstart Event Error: " + err);
+    });
   }
 
 }

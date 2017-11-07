@@ -1,6 +1,6 @@
 {
   "name": "MobileVetNTX",
-  "app_id": "",
+  "app_id": "beb1111f",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
