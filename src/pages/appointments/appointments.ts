@@ -30,25 +30,5 @@ export class AppointmentPage {
       petName: [''],
       nature: ['']
     });
-    this.http = http;
-    this.mailgunUrl = "sandbox5382cd03b7b7464885dcb3c7e2a911e0.mailgun.org";
-    this.mailgunApiKey = window.btoa("api:key-3d45a6afc1f4cff0c3510755aa25f457");
   }
-
-  send(recipient: string, subject: string, message: string) {
-        var requestHeaders = new Headers();
-        requestHeaders.append("Authorization", "Basic " + this.mailgunApiKey);
-        requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        this.http.request(new Request({
-            method: RequestMethod.Post,
-            url: "https://api.mailgun.net/v3/sandbox5382cd03b7b7464885dcb3c7e2a911e0.mailgun.org/messages",
-            body: "from=test@example.com&to=tylerlafferty4@gmail.com&subject=Test&text=Testing this",
-            headers: requestHeaders
-        }))
-        .subscribe(success => {
-            console.log("SUCCESS -> " + JSON.stringify(success));
-        }, error => {
-            console.log("ERROR -> " + JSON.stringify(error));
-        });
-    }
 }
