@@ -7,6 +7,8 @@ import { NavController } from 'ionic-angular';
 })
 export class ServicesPage {
 
+  background = '#50095f';
+
   constructor(public navCtrl: NavController) {
 
   }

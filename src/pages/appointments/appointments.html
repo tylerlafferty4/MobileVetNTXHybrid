@@ -4,18 +4,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding [ngStyle]="{'background-color': background}">
-  <p text-center style="color:white;">Please complete the following form to request an appointment. Please also note that availability will vary depending on your request.
+<ion-content padding [ngStyle]="{'background-color': background}" text-center style="color:white;">
+  <p>Please complete the following form to request an appointment. Please also note that availability will vary depending on your request.
     Your appointment will be confirmed by phone by a member of our stagg. Thank you!
   </p>
-  <form [formGroup]="appointment" (ngSubmit)="logForm()">
+  <form [formGroup]="appointment" (ngSubmit)="send('tylerlafferty4@gmail.com', 'Test', 'Testing this')">
       <ion-item>
         <ion-label>Name</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx"></ion-input>
+        <ion-input type="text" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx-xxx-xxxx"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Street address</ion-label>
@@ -39,7 +39,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Date</ion-label>
-        <ion-input type="date" [(ngModel)]="userInfo.date" formControlName="date"></ion-input>
+        <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [(ngModel)]="userInfo.date" formControlName="date"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Pet Name</ion-label>
