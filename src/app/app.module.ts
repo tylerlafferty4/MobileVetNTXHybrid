@@ -13,12 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { Pro } from '@ionic/pro';
-
-const IonicPro = Pro.init('APP_ID', {
-  appVersion: "APP_VERSION"
-});
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @NgModule({
   declarations: [
@@ -48,6 +43,7 @@ const IonicPro = Pro.init('APP_ID', {
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
