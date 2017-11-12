@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Http, Request, RequestMethod, Headers } from "@angular/http";
+import { HTTP } from '@ionic-native/http';
 import { Config } from '../../../config/config';
 
 @Component({
@@ -10,8 +11,6 @@ import { Config } from '../../../config/config';
   providers: [Config]
 })
 export class AppointmentPage {
-
-  http: Http;
   mailgunUrl: string;
   mailgunApiKey: string;
 
@@ -22,7 +21,7 @@ export class AppointmentPage {
 
 
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public toastCtrl: ToastController, http: Http, private config: Config) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController, private http: HTTP, private config: Config) {
     this.appointment = this.formBuilder.group({
       name: [''],
       phone: ['', Validators.required],
@@ -35,34 +34,63 @@ export class AppointmentPage {
       petName: [''],
       nature: ['']
     });
-
-    this.http = http;
     this.mailgunUrl = this.config.mailgunURL;
     this.mailgunApiKey = this.config.mailgunAPI;
   }
 
   send() {
-    var requestHeaders = new Headers();
-    requestHeaders.append("Authorization", "Basic " + this.config.mailgunAPI);
-    requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-    this.http.request(new Request({
-        method: RequestMethod.Post,
-        url: "https://api.mailgun.net/v3/sandbox5382cd03b7b7464885dcb3c7e2a911e0.mailgun.org/messages",
-        body: "from=test@example.com&to=tylerlafferty4@gmail.com&subject=This is a test&text=Just testing this message",
-        headers: requestHeaders
-    }))
-    .subscribe(success => {
-        console.log("SUCCESS -> " + JSON.stringify(success));
-        var toast = this.toastCtrl.create({
-          message: "SUCCESS -> " + JSON.stringify(success)
+    var url = "https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages";
+    let body = {
+      "from": this.userInfo.email,
+      "to": 'tylerlafferty4@gmail.com',
+      "subject": 'Mobile Veterinary Appointment Request',
+      "html": "<html><body>Name: " + this.userInfo.name + "<br>Phone Number: " + this.userInfo.phone + "<br>Address: " + this.userInfo.address + 
+              "<br>Address Line 2: " + this.userInfo.address2 + "<br>City: " + this.userInfo.city + "<br>Zip Code: " + this.userInfo.zip +
+               "<br>Email: " + this.userInfo.email + "<br>Date: " + this.userInfo.date + "<br>Pet Name: " + this.userInfo.petName + 
+               "<br>Nature of visit: " + this.userInfo.nature + "</body></html>"
+    }
+    let headers = {
+      "Authorization": "Basic " + this.config.mailgunAPI,
+      "Content-Type": "application/x-www-form-urlencoded"
+
+    };
+    this.http.post(url, body, headers).then(data => {
+
+      let alert = this.alertCtrl.create({
+        title: 'Mobile Vet N TX',
+        message: 'We have received your appointment request. A member of our staff will be in touch shortly.'
+      });
+      alert.present();
+    })
+      .catch(error => {
+
+        let alert = this.alertCtrl.create({
+          title: 'Mobile Vet N TX',
+          message: 'An error occurred when sending your request. Please try again later or give us a call at (940) 990-0862'
         });
-        toast.present();
-    }, error => {
-        console.log("ERROR -> " + JSON.stringify(error));
-        var toast = this.toastCtrl.create({
-          message: "ERROR -> " + JSON.stringify(error)
-        });
-        toast.present();
-    });
+        alert.present();
+      });
+    // var requestHeaders = new Headers();
+    // requestHeaders.append("Authorization", "Basic " + this.config.mailgunAPI);
+    // requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    // this.http.request(new Request({
+    //     method: RequestMethod.Post,
+    //     url: "https://api.mailgun.net/v3/sandbox5382cd03b7b7464885dcb3c7e2a911e0.mailgun.org/messages",
+    //     body: "from=test@example.com&to=tylerlafferty4@gmail.com&subject=This is a test&text=Just testing this message",
+    //     headers: requestHeaders
+    // }))
+    // .subscribe(success => {
+    //     console.log("SUCCESS -> " + JSON.stringify(success));
+    //     var toast = this.toastCtrl.create({
+    //       message: "SUCCESS -> " + JSON.stringify(success)
+    //     });
+    //     toast.present();
+    // }, error => {
+    //     console.log("ERROR -> " + JSON.stringify(error));
+    //     var toast = this.toastCtrl.create({
+    //       message: "ERROR -> " + JSON.stringify(error)
+    //     });
+    //     toast.present();
+    // });
 }
 }

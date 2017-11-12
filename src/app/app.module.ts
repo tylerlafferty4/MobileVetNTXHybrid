@@ -15,6 +15,7 @@ import { Config } from '../../config/config';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { HttpModule } from "@angular/http";
     SplashScreen,
     InAppBrowser,
     Config,
+    HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
