@@ -38,16 +38,16 @@ export class AppointmentPage {
 
     this.http = http;
     this.mailgunUrl = this.config.mailgunURL;
-    this.mailgunApiKey = window.btoa(this.config.mailgunAPI);
+    this.mailgunApiKey = this.config.mailgunAPI;
   }
 
   send() {
     var requestHeaders = new Headers();
-    requestHeaders.append("Authorization", "Basic " + this.mailgunApiKey);
+    requestHeaders.append("Authorization", "Basic " + this.config.mailgunAPI);
     requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     this.http.request(new Request({
         method: RequestMethod.Post,
-        url: "https://api.mailgun.net/v3/" + this.mailgunUrl + "/messages",
+        url: "https://api.mailgun.net/v3/sandbox5382cd03b7b7464885dcb3c7e2a911e0.mailgun.org/messages",
         body: "from=test@example.com&to=tylerlafferty4@gmail.com&subject=This is a test&text=Just testing this message",
         headers: requestHeaders
     }))
