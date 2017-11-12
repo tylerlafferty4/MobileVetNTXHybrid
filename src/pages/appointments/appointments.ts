@@ -58,7 +58,15 @@ export class AppointmentPage {
 
       let alert = this.alertCtrl.create({
         title: 'Mobile Vet N TX',
-        message: 'We have received your appointment request. A member of our staff will be in touch shortly.'
+        message: 'We have received your appointment request. A member of our staff will be in touch shortly.',
+        buttons: [
+          {
+            text: 'Close',
+            handler: () => {
+              console.log('Close clicked');
+            }
+          }
+        ]
       });
       alert.present();
     })
@@ -66,7 +74,21 @@ export class AppointmentPage {
 
         let alert = this.alertCtrl.create({
           title: 'Mobile Vet N TX',
-          message: 'An error occurred when sending your request. Please try again later or give us a call at (940) 990-0862'
+          message: 'An error occurred when sending your request. Please try again later or give us a call at (940) 990-0862',
+          buttons: [
+            {
+              text: 'Close',
+              handler: () => {
+                console.log('Close clicked');
+              }
+            }, 
+            {
+              text: 'Call Now',
+              handler: () => {
+                console.log('Call now clicked');
+              }
+            }
+          ]
         });
         alert.present();
       });
