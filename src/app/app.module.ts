@@ -10,10 +10,11 @@ import { AppointmentPage } from '../pages/appointments/appointments';
 import { ServicesPage } from '../pages/services/services';
 import { OnlineStorePage } from '../pages/online-store/online-store';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Config } from '../../config/config';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -43,7 +45,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    EmailComposer,
+    Config,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
