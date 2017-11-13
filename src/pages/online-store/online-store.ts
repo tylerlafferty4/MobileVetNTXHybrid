@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ApplicationRef } from '@angular/core';
 import { NavController, Tabs, Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { ApplicationRef } from '@angular/core/src/application_ref';
 
 @Component({
   selector: 'page-online-store',
