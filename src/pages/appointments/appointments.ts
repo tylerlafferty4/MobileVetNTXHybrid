@@ -30,13 +30,20 @@ export class AppointmentPage {
       address2: [''],
       city: ['', Validators.required],
       zip: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
-      email: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required])],
       date: ['', Validators.required],
       petName: [''],
       nature: ['']
     });
     this.mailgunUrl = this.config.mailgunURL;
     this.mailgunApiKey = this.config.mailgunAPI;
+  }
+
+  validPhoneNumber() {
+    if (this.userInfo.phone.length != 12) {
+      return false;
+    }
+    return true;
   }
 
   send() {
