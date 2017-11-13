@@ -20,7 +20,7 @@ export class ContactPage {
               private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.contact = this.formBuilder.group({
       name: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],   
       email: ['', Validators.required],
       message: ['', Validators.required],
     });
@@ -73,6 +73,7 @@ export class ContactPage {
               text: 'Call Now',
               handler: () => {
                 console.log('Call now clicked');
+                this.contact.reset();
                 this.callNumber.callNumber("19409900862", true)
                 .then(() => console.log('Launched dialer!'))
                 .catch(() => console.log('Error launching dialer'));

@@ -25,7 +25,7 @@ export class AppointmentPage {
               private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.appointment = this.formBuilder.group({
       name: [''],
-      phone: ['', Validators.required],
+      phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],      
       address: ['', Validators.required],
       address2: [''],
       city: ['', Validators.required],
@@ -88,6 +88,7 @@ export class AppointmentPage {
               text: 'Call Now',
               handler: () => {
                 console.log('Call now clicked');
+                this.appointment.reset();
                 this.callNumber.callNumber("19409900862", true)
                 .then(() => console.log('Launched dialer!'))
                 .catch(() => console.log('Error launching dialer'));

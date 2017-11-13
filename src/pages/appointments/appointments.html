@@ -15,7 +15,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx-xxx-xxxx"></ion-input>
+        <ion-input type="number" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx-xxx-xxxx"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Street address</ion-label>
@@ -31,7 +31,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Zip Code</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.zip" formControlName="zip"></ion-input>
+        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Email</ion-label>
