@@ -94,4 +94,5 @@
         <variable name="MAX_STORE" value="2" />
     </plugin>
     <plugin name="cordova-plugin-advanced-http" spec="^1.8.1" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

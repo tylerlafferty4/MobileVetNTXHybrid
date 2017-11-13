@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -48,6 +49,7 @@ import { HTTP } from '@ionic-native/http';
     InAppBrowser,
     Config,
     HTTP,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

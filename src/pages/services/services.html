@@ -6,8 +6,17 @@
 
 <ion-content padding text-center [ngStyle]="{'background-color': background}">
   <p style="color: white;">
-    At Mobile Veterinary Clinic of North Texas, we offer a variety of services to care for your pet.
-    Contact us if you have any questions or would like more information on how we can care for your pet.
+      At Mobile Veterinary Clinic of North Texas, we offer a variety of services to care for your pet.
+      Contact us if you have any questions or would like more information on how we can care for your pet.
   </p>
+  <ion-list>
+    <ion-item class="item item-trns text-center" *ngFor="let d of services; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        {{d.title}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">{{d.description}}</div>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

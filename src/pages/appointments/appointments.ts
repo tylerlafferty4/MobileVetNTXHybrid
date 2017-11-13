@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Http, Request, RequestMethod, Headers } from "@angular/http";
 import { HTTP } from '@ionic-native/http';
 import { Config } from '../../../config/config';
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-appointments',
@@ -21,7 +21,8 @@ export class AppointmentPage {
 
 
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController, private http: HTTP, private config: Config) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController, 
+              private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.appointment = this.formBuilder.group({
       name: [''],
       phone: ['', Validators.required],
@@ -61,9 +62,10 @@ export class AppointmentPage {
         message: 'We have received your appointment request. A member of our staff will be in touch shortly.',
         buttons: [
           {
-            text: 'Close',
+            text: 'Ok',
             handler: () => {
-              console.log('Close clicked');
+              console.log('Ok clicked');
+              this.appointment.reset();
             }
           }
         ]
@@ -86,6 +88,9 @@ export class AppointmentPage {
               text: 'Call Now',
               handler: () => {
                 console.log('Call now clicked');
+                this.callNumber.callNumber("19409900862", true)
+                .then(() => console.log('Launched dialer!'))
+                .catch(() => console.log('Error launching dialer'));
               }
             }
           ]
