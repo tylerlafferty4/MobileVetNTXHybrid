@@ -41,7 +41,7 @@ export class AppointmentPage {
 
   ionViewDidEnter() {
     var t: Tabs = this.navCtrl.parent;
-    t.select(2);
+    t.select(1);
   }
 
   validPhoneNumber() {

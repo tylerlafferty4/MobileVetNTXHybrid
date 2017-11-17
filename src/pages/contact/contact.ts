@@ -28,7 +28,7 @@ export class ContactPage {
 
   ionViewDidEnter() {
     var t: Tabs = this.navCtrl.parent;
-    t.select(2);
+    t.select(4);
   }
 
   send() {
