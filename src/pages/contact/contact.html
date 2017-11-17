@@ -13,23 +13,41 @@
   <p>Monday - Friday 8:30 AM - 6:00 PM</p>
   <p>Saturday & Sunday - By Appointment Only</p>
   <h4>Send us a message</h4>
-  <form [formGroup]="contact" (ngSubmit)="send()">
+  <ion-list no-lines>
+    <form [formGroup]="contact" (ngSubmit)="send()">
+      <!-- Name -->
       <ion-item>
-        <ion-label>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name"></ion-input>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name" [class.invalid]="!contact.controls.name.valid && contact.controls.name.dirty"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>Phone</ion-label>
-        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx-xxx-xxxx"></ion-input>
+      <ion-item *ngIf="!contact.controls.name.valid && contact.controls.name.dirty">
+        <p class="validation">Please enter a valid name</p>
       </ion-item>
+      <!-- Phone Number -->
       <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email"></ion-input>
+        <ion-label floating>Phone</ion-label>
+        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!contact.controls.phone.valid && contact.controls.phone.dirty"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!contact.controls.phone.valid && contact.controls.phone.dirty">
+        <p class="validation">XXX-XXX-XXXX format</p>
+      </ion-item>
+      <!-- Email -->
       <ion-item>
-        <ion-label>Message</ion-label>
-        <ion-textarea type="text" [(ngModel)]="userInfo.message" formControlName="message"></ion-textarea>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!contact.controls.email.valid && contact.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!contact.controls.email.valid && contact.controls.email.dirty">
+        <p class="validation">Please enter a valid email</p>
+      </ion-item>
+      <!-- Message -->
+      <ion-item>
+        <ion-label floating>Message</ion-label>
+        <ion-textarea type="text" [(ngModel)]="userInfo.message" formControlName="message" [class.invalid]="!contact.controls.message.valid && contact.controls.message.dirty"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="!contact.controls.message.valid && contact.controls.message.dirty">
+        <p class="validation">Please enter a message</p>
       </ion-item>
       <button ion-button type="submit" [disabled]="!contact.valid">Submit</button>
     </form>
+  </ion-list>
 </ion-content>

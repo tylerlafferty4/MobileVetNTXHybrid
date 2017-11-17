@@ -18,6 +18,7 @@ export class AppointmentPage {
   userInfo: {name: string, phone: string, address: string, address2: string, city: string, zip: string, email: string, date: string, petName: string, nature: string} =
             {name: '', phone: '', address: '', address2: '', city: '', zip: '', email: '', date: '', petName: '', nature: ''};
   background = '#50095f';
+  today = new Date().toISOString();
 
 
 

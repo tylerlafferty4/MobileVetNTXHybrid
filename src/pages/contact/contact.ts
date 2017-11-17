@@ -19,7 +19,7 @@ export class ContactPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, private formBuilder: FormBuilder, 
               private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.contact = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],   
       email: ['', Validators.required],
       message: ['', Validators.required],

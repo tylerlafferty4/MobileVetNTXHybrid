@@ -8,47 +8,49 @@
   <p>Please complete the following form to request an appointment. Please also note that availability will vary depending on your request.
     Your appointment will be confirmed by phone by a member of our staff. Thank you!
   </p>
-  <form [formGroup]="appointment" (ngSubmit)="send()">
+  <ion-list no-lines>
+    <form [formGroup]="appointment" (ngSubmit)="send()" >
       <ion-item>
-        <ion-label>Name</ion-label>
+        <ion-label floating>Name</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Phone</ion-label>
-        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" placeholder="xxx-xxx-xxxx"></ion-input>
+        <ion-label floating>Phone</ion-label>
+        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Street address</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.address" formControlName="address"></ion-input>
+        <ion-label floating>Street address</ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.address" formControlName="address" [class.invalid]="!appointment.controls.address.valid && appointment.controls.address.dirty"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Address Line 2</ion-label>
+        <ion-label floating>Address Line 2</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.address2" formControlName="address2"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>City</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.city" formControlName="city"></ion-input>
+        <ion-label floating>City</ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.city" formControlName="city" [class.invalid]="!appointment.controls.city.valid && appointment.controls.city.dirty"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Zip Code</ion-label>
-        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip"></ion-input>
+        <ion-label floating>Zip Code</ion-label>
+        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip" [class.invalid]="!appointment.controls.zip.valid && appointment.controls.zip.dirty"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email"></ion-input>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!appointment.controls.email.valid && appointment.controls.email.dirty"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [(ngModel)]="userInfo.date" formControlName="date"></ion-datetime>
+        <ion-label floating>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [min]="today" [(ngModel)]="userInfo.date" formControlName="date" [class.invalid]="!appointment.controls.date.valid && appointment.controls.date.dirty"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label>Pet Name</ion-label>
+        <ion-label floating>Pet Name</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.petName" formControlName="petName"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Nature of Visit</ion-label>
+        <ion-label floating>Nature of Visit</ion-label>
         <ion-textarea type="text" [(ngModel)]="userInfo.nature" formControlName="nature"></ion-textarea>
       </ion-item>
       <button ion-button type="submit" [disabled]="!appointment.valid">Submit</button>
     </form>
+  </ion-list>
 </ion-content>
