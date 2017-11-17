@@ -20,11 +20,15 @@ export class OnlineStorePage {
         this.platform.ready().then(() => {
           var t: Tabs = this.navCtrl.parent;
           t.select(t.previousTab());
-          this.ref.tick();
         });
     }, err => {
       console.log("InAppBrowser loadstart Event Error: " + err);
     });
+  }
+
+  ionViewDidLeave() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(t.previousTab());
   }
 
 }
