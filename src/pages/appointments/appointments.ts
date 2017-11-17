@@ -25,11 +25,11 @@ export class AppointmentPage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController, 
               private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.appointment = this.formBuilder.group({
-      name: [''],
+      name: ['', Validators.pattern('[a-zA-Z]*')],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],      
       address: ['', Validators.required],
       address2: [''],
-      city: ['', Validators.required],
+      city: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
       zip: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
       email: ['', Validators.compose([Validators.required])],
       date: ['', Validators.required],

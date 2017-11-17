@@ -9,43 +9,74 @@
     Your appointment will be confirmed by phone by a member of our staff. Thank you!
   </p>
   <ion-list no-lines>
-    <form [formGroup]="appointment" (ngSubmit)="send()" >
+    <form [formGroup]="appointment" (ngSubmit)="send()">
+      <!-- Name -->
       <ion-item>
         <ion-label floating>Name</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label floating>Phone</ion-label>
-        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
+      <ion-item *ngIf="!appointment.controls.name.valid && appointment.controls.name.dirty">
+        <p class="validation">Please enter a valid name</p>
       </ion-item>
+      <!-- Phone Number -->
       <ion-item>
-        <ion-label floating>Street address</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.address" formControlName="address" [class.invalid]="!appointment.controls.address.valid && appointment.controls.address.dirty"></ion-input>
+        <ion-label floating>Phone*</ion-label>
+        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty" [class.valid]="appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!appointment.controls.phone.valid && appointment.controls.phone.dirty">
+        <p class="validation">XXX-XXX-XXXX format</p>
+      </ion-item>
+      <!-- Street Address -->
+      <ion-item>
+        <ion-label floating>Street address*</ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.address" formControlName="address" [class.invalid]="!appointment.controls.address.valid && appointment.controls.address.dirty" [class.valid]="appointment.controls.address.valid && appointment.controls.address.dirty"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!appointment.controls.address.valid && appointment.controls.address.dirty">
+        <p class="validation">Please enter a valid street address</p>
+      </ion-item>
+      <!-- Address Line 2 -->
       <ion-item>
         <ion-label floating>Address Line 2</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.address2" formControlName="address2"></ion-input>
       </ion-item>
+      <!-- City -->
       <ion-item>
-        <ion-label floating>City</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.city" formControlName="city" [class.invalid]="!appointment.controls.city.valid && appointment.controls.city.dirty"></ion-input>
+        <ion-label floating>City*</ion-label>
+        <ion-input type="text" [(ngModel)]="userInfo.city" formControlName="city" [class.invalid]="!appointment.controls.city.valid && appointment.controls.city.dirty" [class.valid]="appointment.controls.city.valid && appointment.controls.city.dirty"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!appointment.controls.city.valid && appointment.controls.city.dirty">
+        <p class="validation">Please enter a valid city</p>
+      </ion-item>
+      <!-- Zip Code -->
       <ion-item>
-        <ion-label floating>Zip Code</ion-label>
-        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip" [class.invalid]="!appointment.controls.zip.valid && appointment.controls.zip.dirty"></ion-input>
+        <ion-label floating>Zip Code*</ion-label>
+        <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip" [class.invalid]="!appointment.controls.zip.valid && appointment.controls.zip.dirty" [class.valid]="appointment.controls.zip.valid && appointment.controls.zip.dirty"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!appointment.controls.zip.valid && appointment.controls.zip.dirty">
+        <p class="validation">Please enter a valid zip code</p>
+      </ion-item>
+      <!-- Email -->
       <ion-item>
-        <ion-label floating>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!appointment.controls.email.valid && appointment.controls.email.dirty"></ion-input>
+        <ion-label floating>Email*</ion-label>
+        <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!appointment.controls.email.valid && appointment.controls.email.dirty" [class.valid]="appointment.controls.email.valid && appointment.controls.email.dirty"></ion-input>
       </ion-item>
+      <ion-item *ngIf="!appointment.controls.email.valid && appointment.controls.email.dirty">
+        <p class="validation">Please enter a valid email</p>
+      </ion-item>
+      <!-- Date -->
       <ion-item>
-        <ion-label floating>Date</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [min]="today" [(ngModel)]="userInfo.date" formControlName="date" [class.invalid]="!appointment.controls.date.valid && appointment.controls.date.dirty"></ion-datetime>
+        <ion-label floating>Date*</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [min]="today" [(ngModel)]="userInfo.date" formControlName="date" [class.invalid]="!appointment.controls.date.valid && appointment.controls.date.dirty" [class.valid]="appointment.controls.date.valid && appointment.controls.date.dirty"></ion-datetime>
       </ion-item>
+      <ion-item *ngIf="!appointment.controls.date.valid && appointment.controls.date.dirty">
+        <p class="validation">Please enter a date</p>
+      </ion-item>
+      <!-- Pet Name -->
       <ion-item>
         <ion-label floating>Pet Name</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.petName" formControlName="petName"></ion-input>
       </ion-item>
+      <!-- Nature of visit -->
       <ion-item>
         <ion-label floating>Nature of Visit</ion-label>
         <ion-textarea type="text" [(ngModel)]="userInfo.nature" formControlName="nature"></ion-textarea>
