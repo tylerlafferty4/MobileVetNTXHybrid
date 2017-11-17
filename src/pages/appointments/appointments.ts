@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Tabs } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HTTP } from '@ionic-native/http';
 import { Config } from '../../../config/config';
@@ -37,6 +37,11 @@ export class AppointmentPage {
     });
     this.mailgunUrl = this.config.mailgunURL;
     this.mailgunApiKey = this.config.mailgunAPI;
+  }
+
+  ionViewDidEnter() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(2);
   }
 
   validPhoneNumber() {

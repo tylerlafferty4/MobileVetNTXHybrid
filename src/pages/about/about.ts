@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Tabs } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -12,5 +12,9 @@ export class AboutPage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  ionViewDidEnter() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(2);
+  }
 }
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Tabs } from 'ionic-angular';
 
 @Component({
   selector: 'page-services',
@@ -26,6 +26,11 @@ export class ServicesPage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewDidEnter() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(2);
   }
 
   toggleGroup(group) {
