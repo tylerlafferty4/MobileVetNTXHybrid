@@ -26,7 +26,7 @@
       <!-- Phone Number -->
       <ion-item>
         <ion-label floating>Phone*</ion-label>
-        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!contact.controls.phone.valid && contact.controls.phone.dirty" [class.valid]="contact.controls.phone.valid && contact.controls.phone.dirty"></ion-input>
+        <ion-input type="tel" [(ngModel)]="userInfo.phone" (ionChange)='phoneChanged()' formControlName="phone" [class.invalid]="!contact.controls.phone.valid && contact.controls.phone.dirty" [class.valid]="contact.controls.phone.valid && contact.controls.phone.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!contact.controls.phone.valid && contact.controls.phone.dirty">
         <p class="validation">XXX-XXX-XXXX format</p>

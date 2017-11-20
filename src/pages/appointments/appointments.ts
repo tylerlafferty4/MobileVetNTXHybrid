@@ -25,11 +25,11 @@ export class AppointmentPage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController, 
               private http: HTTP, private config: Config, private callNumber: CallNumber) {
     this.appointment = this.formBuilder.group({
-      name: ['', Validators.pattern('[a-zA-Z]*')],
+      name: ['', Validators.pattern('[a-zA-Z ]*')],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],      
       address: ['', Validators.required],
       address2: [''],
-      city: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
+      city: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
       zip: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
       email: ['', Validators.compose([Validators.required])],
       date: ['', Validators.required],
@@ -43,6 +43,14 @@ export class AppointmentPage {
   ionViewDidEnter() {
     var t: Tabs = this.navCtrl.parent;
     t.select(1);
+  }
+
+  phoneChanged() {
+    if(this.userInfo.phone.length == 3) {
+      this.userInfo.phone = this.userInfo.phone + '-';
+    } else if(this.userInfo.phone.length == 7) {
+      this.userInfo.phone = this.userInfo.phone + '-';
+    }
   }
 
   validPhoneNumber() {

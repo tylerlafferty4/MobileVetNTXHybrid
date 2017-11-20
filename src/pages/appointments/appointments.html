@@ -13,7 +13,7 @@
       <!-- Name -->
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="userInfo.name" autocomplete='on' autocorrect='on' autocapitalize='on' formControlName="name"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.name.valid && appointment.controls.name.dirty">
         <p class="validation">Please enter a valid name</p>
@@ -21,7 +21,7 @@
       <!-- Phone Number -->
       <ion-item>
         <ion-label floating>Phone*</ion-label>
-        <ion-input type="tel" [(ngModel)]="userInfo.phone" formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty" [class.valid]="appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
+        <ion-input type="tel" [(ngModel)]="userInfo.phone" (ionChange)='phoneChanged()' formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty" [class.valid]="appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.phone.valid && appointment.controls.phone.dirty">
         <p class="validation">XXX-XXX-XXXX format</p>
