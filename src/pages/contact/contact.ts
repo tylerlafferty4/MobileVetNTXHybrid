@@ -21,7 +21,7 @@ export class ContactPage {
     this.contact = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],   
-      email: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$')])],
       message: ['', Validators.required],
     });
   }

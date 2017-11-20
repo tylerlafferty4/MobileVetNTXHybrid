@@ -31,7 +31,7 @@ export class AppointmentPage {
       address2: [''],
       city: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
       zip: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])],
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$')])],
       date: ['', Validators.required],
       petName: [''],
       nature: ['']
