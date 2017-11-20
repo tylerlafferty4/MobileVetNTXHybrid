@@ -12,14 +12,16 @@ export class OnlineStorePage {
 
   }
 
-  clickedButton() {
+  ngOnInit() {
     var browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no');
     browser.show();
     browser.on('exit').subscribe(event => {
       console.log("loadstart -->",event);
         this.platform.ready().then(() => {
-          var t: Tabs = this.navCtrl.parent;
-          t.select(t.previousTab());
+          setTimeout(() => {
+            var t: Tabs = this.navCtrl.parent;
+            t.select(t.previousTab());
+          }, 2000);
         });
     }, err => {
       console.log("InAppBrowser loadstart Event Error: " + err);
@@ -27,7 +29,7 @@ export class OnlineStorePage {
   }
 
   ionViewDidLeave() {
-    var t: Tabs = this.navCtrl.parent;
-    t.select(t.previousTab());
+    // var t: Tabs = this.navCtrl.parent;
+    // t.select(t.previousTab());
   }
 }
