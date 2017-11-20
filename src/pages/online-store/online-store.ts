@@ -13,7 +13,7 @@ export class OnlineStorePage {
   }
 
   clickedButton() {
-    var browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no,location=no');
+    var browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no');
     browser.show();
     browser.on('exit').subscribe(event => {
       console.log("loadstart -->",event);
