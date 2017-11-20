@@ -12,8 +12,8 @@ export class OnlineStorePage {
 
   }
 
-  ionViewDidEnter() {
-    const browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no');
+  clickedButton() {
+    var browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no,location=no');
     browser.show();
     browser.on('exit').subscribe(event => {
       console.log("loadstart -->",event);
