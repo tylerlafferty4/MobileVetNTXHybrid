@@ -14,19 +14,19 @@ export class OnlineStorePage {
 
   ionViewDidEnter() {
     var t: Tabs = this.navCtrl.parent;
-    t.select(t.previousTab());
+    t.select(0);
     var browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'fullscreen=no');
     browser.show();
-    browser.on('exit').subscribe(event => {
-      console.log("loadstart -->",event);
-        this.platform.ready().then(() => {
-          setTimeout(() => {
+    // browser.on('exit').subscribe(event => {
+    //   console.log("loadstart -->",event);
+    //     this.platform.ready().then(() => {
+    //       setTimeout(() => {
             
-          }, 2000);
-        });
-    }, err => {
-      console.log("InAppBrowser loadstart Event Error: " + err);
-    });
+    //       }, 2000);
+    //     });
+    // }, err => {
+    //   console.log("InAppBrowser loadstart Event Error: " + err);
+    // });
   }
 
   ionViewDidLeave() {
