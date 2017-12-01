@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, Tabs, Platform } from 'ionic-angular';
+import { NavController, /*Tabs,*/ Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { SafariViewController } from '@ionic-native/safari-view-controller';
+//import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @Component({
   selector: 'page-online-store',
@@ -14,6 +14,7 @@ export class OnlineStorePage {
   }
 
   ionViewDidEnter() {
+    //window.open('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'location=yes,toolbar=yes');
     // this.safariViewController.isAvailable().then((available: boolean) => {
     //   if (available) {
     //     this.safariViewController.show({
