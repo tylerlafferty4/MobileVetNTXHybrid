@@ -9,7 +9,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 })
 export class OnlineStorePage {
 
-  constructor(public navCtrl: NavController, public platform: Platform, private iab: InAppBrowser, private safariViewController: SafariViewController) {
+  constructor(public navCtrl: NavController, public platform: Platform, private iab: InAppBrowser/*, private safariViewController: SafariViewController*/) {
 
   }
 
