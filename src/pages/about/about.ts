@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, Tabs } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-about',
@@ -11,7 +12,7 @@ export class AboutPage {
   tabBarElement: any;
   splash = true;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private iab: InAppBrowser) {
     this.tabBarElement = document.querySelector('.tabbar');
   }
 
@@ -23,9 +24,9 @@ export class AboutPage {
     }, 4000);
   }
 
-  ionViewDidEnter() {
-    var t: Tabs = this.navCtrl.parent;
-    t.select(0);
+  visitStore() {
+    const browser = this.iab.create('http://mobilevetclinicofnorthtexas.vetsfirstchoice.com/', '_blank', 'presentationstyle=formsheet');
+    browser.show();
   }
 }
 

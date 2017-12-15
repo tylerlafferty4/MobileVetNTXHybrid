@@ -42,11 +42,12 @@
       <!-- Message -->
       <ion-item>
         <ion-label floating>Message*</ion-label>
-        <ion-textarea type="text" [(ngModel)]="userInfo.message" formControlName="message" [class.invalid]="!contact.controls.message.valid && contact.controls.message.dirty"></ion-textarea>
+        <ion-textarea type="text" [(ngModel)]="userInfo.message" formControlName="message" [class.invalid]="!contact.controls.message.valid && contact.controls.message.dirty" [class.valid]="contact.controls.message.valid && contact.controls.message.dirty"></ion-textarea>
       </ion-item>
       <ion-item *ngIf="!contact.controls.message.valid && contact.controls.message.dirty">
         <p class="validation">Please enter a message</p>
       </ion-item>
+      <ion-item></ion-item>
       <button ion-button type="submit" [disabled]="!contact.valid">Submit</button>
     </form>
   </ion-list>
