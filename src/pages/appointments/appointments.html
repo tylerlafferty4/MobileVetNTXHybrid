@@ -20,7 +20,7 @@
       </ion-item>
       <!-- Phone Number -->
       <ion-item>
-        <ion-label floating>Phone*</ion-label>
+        <ion-label floating>Phone *</ion-label>
         <ion-input type="tel" [(ngModel)]="userInfo.phone" (ionChange)='phoneChanged()' formControlName="phone" [class.invalid]="!appointment.controls.phone.valid && appointment.controls.phone.dirty" [class.valid]="appointment.controls.phone.valid && appointment.controls.phone.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.phone.valid && appointment.controls.phone.dirty">
@@ -28,7 +28,7 @@
       </ion-item>
       <!-- Street Address -->
       <ion-item>
-        <ion-label floating>Street address*</ion-label>
+        <ion-label floating>Street Address *</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.address" formControlName="address" [class.invalid]="!appointment.controls.address.valid && appointment.controls.address.dirty" [class.valid]="appointment.controls.address.valid && appointment.controls.address.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.address.valid && appointment.controls.address.dirty">
@@ -41,7 +41,7 @@
       </ion-item>
       <!-- City -->
       <ion-item>
-        <ion-label floating>City*</ion-label>
+        <ion-label floating>City *</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.city" formControlName="city" [class.invalid]="!appointment.controls.city.valid && appointment.controls.city.dirty" [class.valid]="appointment.controls.city.valid && appointment.controls.city.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.city.valid && appointment.controls.city.dirty">
@@ -49,7 +49,7 @@
       </ion-item>
       <!-- Zip Code -->
       <ion-item>
-        <ion-label floating>Zip Code*</ion-label>
+        <ion-label floating>Zip Code *</ion-label>
         <ion-input type="number" pattern="[0-9]*" [(ngModel)]="userInfo.zip" formControlName="zip" [class.invalid]="!appointment.controls.zip.valid && appointment.controls.zip.dirty" [class.valid]="appointment.controls.zip.valid && appointment.controls.zip.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.zip.valid && appointment.controls.zip.dirty">
@@ -57,7 +57,7 @@
       </ion-item>
       <!-- Email -->
       <ion-item>
-        <ion-label floating>Email*</ion-label>
+        <ion-label floating>Email *</ion-label>
         <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!appointment.controls.email.valid && appointment.controls.email.dirty" [class.valid]="appointment.controls.email.valid && appointment.controls.email.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.email.valid && appointment.controls.email.dirty">
@@ -65,7 +65,7 @@
       </ion-item>
       <!-- Date -->
       <ion-item>
-        <ion-label floating>Date*</ion-label>
+        <ion-label floating>Date *</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY" max="2020-10-31" [min]="today" [(ngModel)]="userInfo.date" formControlName="date" [class.invalid]="!appointment.controls.date.valid && appointment.controls.date.dirty" [class.valid]="appointment.controls.date.valid && appointment.controls.date.dirty"></ion-datetime>
       </ion-item>
       <ion-item *ngIf="!appointment.controls.date.valid && appointment.controls.date.dirty">
@@ -82,7 +82,7 @@
         <ion-textarea type="text" [(ngModel)]="userInfo.nature" formControlName="nature"></ion-textarea>
       </ion-item>
       <ion-item></ion-item>
-      <button ion-button type="submit" [disabled]="!appointment.valid">Submit</button>
+      <button ion-button round color="secondary" type="submit" [outline]="!appointment.valid" [disabled]="!appointment.valid">Submit</button>
     </form>
   </ion-list>
 </ion-content>

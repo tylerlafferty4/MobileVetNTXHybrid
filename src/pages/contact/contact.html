@@ -17,7 +17,7 @@
     <form [formGroup]="contact" (ngSubmit)="send()">
       <!-- Name -->
       <ion-item>
-        <ion-label floating>Name*</ion-label>
+        <ion-label floating>Name *</ion-label>
         <ion-input type="text" [(ngModel)]="userInfo.name" formControlName="name" [class.invalid]="!contact.controls.name.valid && contact.controls.name.dirty" [class.valid]="contact.controls.name.valid && contact.controls.name.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!contact.controls.name.valid && contact.controls.name.dirty">
@@ -25,7 +25,7 @@
       </ion-item>
       <!-- Phone Number -->
       <ion-item>
-        <ion-label floating>Phone*</ion-label>
+        <ion-label floating>Phone *</ion-label>
         <ion-input type="tel" [(ngModel)]="userInfo.phone" (ionChange)='phoneChanged()' formControlName="phone" [class.invalid]="!contact.controls.phone.valid && contact.controls.phone.dirty" [class.valid]="contact.controls.phone.valid && contact.controls.phone.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!contact.controls.phone.valid && contact.controls.phone.dirty">
@@ -33,7 +33,7 @@
       </ion-item>
       <!-- Email -->
       <ion-item>
-        <ion-label floating>Email*</ion-label>
+        <ion-label floating>Email *</ion-label>
         <ion-input type="email" [(ngModel)]="userInfo.email" formControlName="email" [class.invalid]="!contact.controls.email.valid && contact.controls.email.dirty" [class.valid]="contact.controls.email.valid && contact.controls.email.dirty"></ion-input>
       </ion-item>
       <ion-item *ngIf="!contact.controls.email.valid && contact.controls.email.dirty">
@@ -41,14 +41,14 @@
       </ion-item>
       <!-- Message -->
       <ion-item>
-        <ion-label floating>Message*</ion-label>
+        <ion-label floating>Message *</ion-label>
         <ion-textarea type="text" [(ngModel)]="userInfo.message" formControlName="message" [class.invalid]="!contact.controls.message.valid && contact.controls.message.dirty" [class.valid]="contact.controls.message.valid && contact.controls.message.dirty"></ion-textarea>
       </ion-item>
       <ion-item *ngIf="!contact.controls.message.valid && contact.controls.message.dirty">
         <p class="validation">Please enter a message</p>
       </ion-item>
       <ion-item></ion-item>
-      <button ion-button type="submit" [disabled]="!contact.valid">Submit</button>
+      <button ion-button round color="secondary" type="submit" [outline]="!contact.valid" [disabled]="!contact.valid">Submit</button>
     </form>
   </ion-list>
 </ion-content>
