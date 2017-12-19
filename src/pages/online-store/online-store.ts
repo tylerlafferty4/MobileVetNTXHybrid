@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, /*Tabs,*/ Platform } from 'ionic-angular';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+//import { InAppBrowser } from '@ionic-native/in-app-browser';
 //import { SafariViewController } from '@ionic-native/safari-view-controller';
 
 @Component({
@@ -9,7 +9,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 })
 export class OnlineStorePage {
 
-  constructor(public navCtrl: NavController, public platform: Platform, private iab: InAppBrowser/*, private safariViewController: SafariViewController*/) {
+  constructor(public navCtrl: NavController, public platform: Platform /*private iab: InAppBrowser, private safariViewController: SafariViewController*/) {
 
   }
 
